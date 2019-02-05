@@ -86,6 +86,11 @@ h2 {
     }
 }
 
+b {
+    font-weight: 700;
+    color: #1f2353;
+}
+
 .button {
     display: inline-block;
     vertical-align: top;
@@ -118,8 +123,20 @@ h2 {
     background-color: #4c4e77;
 }
 
+.button--lighter {
+    background-color: rgba(26,22,56,0.61);
+}
+
+.button--lighter:hover {
+    background-color: #1f2353;
+}
+
 .button--light {
     background-color: #7c7fc7;
+}
+
+.button--light:hover {
+    background-color: #5056c3;;
 }
 
 .button + .button {
@@ -130,6 +147,47 @@ h2 {
     .button + .button {
         margin-left: 15px;
         margin-top: 15px;
+    }
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (min-width: 1025px) {
+    .list__item {
+        width: calc((100% - 60px)/3);
+    }
+    
+    .list__item:last-child:nth-child(2n+3) {
+        margin-left: 30px;
+        margin-right: auto;
+    }
+    .list__item:not(:nth-child(-n+3)) {
+        margin-top: 30px;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .list__item {
+        width: calc(50% - 15px);
+    }
+    .list__item:not(:nth-child(-n+2)) {
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .list__item {
+        width: 100%;
+    }
+    .list__item:not(:first-child) {
+        margin-top: 15px
     }
 }
 
@@ -167,9 +225,15 @@ section {
     padding: 68px 60px;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
     section {
         padding: 68px 0;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    section {
+        padding: 45px 0;
     }
 }
 
@@ -194,6 +258,8 @@ section .container {
 
 .header--gray {
     background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(31, 35, 83, 0.6);
+    background-color: rgba(26,22,56,0.6);
 }
 
 @media screen and (max-width: 768px) {
@@ -280,11 +346,6 @@ section .container {
     padding: 22px 0;
 }
 
-/*
-.navigation__item--icon {
-    padding: 12px 0;
-}
-*/
 
 @media screen and (max-width: 768px) {
     .navigation__item {
@@ -310,12 +371,6 @@ section .container {
     text-decoration: none;
 }
 
-/*
-.navigation__link:not(.navigation__link--current):hover {
-    text-decoration: underline;
-}
-*/
-
 .navigation__link--current {
     cursor: default;
 }
@@ -336,18 +391,6 @@ section .container {
         width: 100%;
         background-color: #fff07c;
     }
-
-/*
-    .navigation__link--home {
-        display: block;
-        height: 40px;
-        width: 40px;
-        background-image: url("../images/home.svg");
-        background-repeat: no-repeat;
-        background-size: contain;
-        font-size: 0;
-    }
-*/
 }
 
 .lang {
@@ -495,6 +538,10 @@ section .container {
     color: #ffffff;
 }
 
+.main-page + section {
+    padding-top: 0;
+}
+
 .main-page__description {
     margin: 0;
     font-size: 30px;
@@ -538,8 +585,7 @@ section .container {
 /* block .about */
 
 .about {
-    padding-top: 0;
-    background-color: #ffffff;
+    
 }
 
 .about--yellow {
@@ -581,13 +627,18 @@ section .container {
 
 .about__col {
     width: calc(50% - 30px);
-    margin-top: 68px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
+    .about--yellow .about__aligner {
+        display: block;
+    }
+    
     .about__col  {
         width: 100%;
-        margin-top: 30px
+    }
+    .about__col:not(:first-child) {
+        margin-top: 30px;
     }
 }
 
@@ -596,6 +647,8 @@ section .container {
     height: 0;
     padding-bottom: 56.25%; /* 16:9 */
 	padding-top: 25px;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .about__video iframe {
@@ -622,6 +675,7 @@ section .container {
 
 .about__text {
     margin: 30px 0;
+    text-align: left;
 }
 
 /* block .gallery */
@@ -739,7 +793,7 @@ section .container {
 
 /* block .media */
 
-.media--bg {
+.media {
     position: relative;
     background-color: rgba(0, 0, 0, 0.6);
     background-image: url("../images/media-bg.jpg");
@@ -749,7 +803,7 @@ section .container {
     background-attachment: fixed;
 }
 
-.media--bg::before {
+.media::before {
     content: "";
     position: absolute;
     top: 0;
@@ -784,12 +838,8 @@ section .container {
 }
 
 .media__text--bold {
-    margin-bottom: 0;
+    margin-bottom: 15;
     font-weight: 700;
-}
-
-.media--bg .media__text--bold {
-    margin-bottom: 15px
 }
 
 /* block .partners */
